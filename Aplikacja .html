@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#8b5cf6">
+<title>Dobry mąż Tomek</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f8f5ff;color:#241b2f}.app{max-width:700px;margin:auto;padding:18px 15px 45px}
+.hero{text-align:center;padding:12px 0}.heart{font-size:42px}.hero h1{margin:3px 0;font-size:32px}.hero p{margin:5px 0;color:#756b80}
+.score{margin:15px 0;padding:19px;border-radius:24px;color:white;background:linear-gradient(135deg,#7c3aed,#ec4899);display:flex;justify-content:space-between;align-items:center;box-shadow:0 10px 28px #7c3aed33}.num{font-size:43px;font-weight:900;line-height:1}.small{font-size:12px;opacity:.85}.level{text-align:right;font-weight:800}.bar{height:7px;width:145px;background:#ffffff44;border-radius:10px;margin:8px 0}.bar span{display:block;height:100%;width:0;background:white;border-radius:10px}
+.nav{display:flex;gap:7px;margin:13px 0}.nav button{flex:1;border:0;border-radius:14px;padding:12px 5px;background:white;font-weight:800;color:#70657b}.nav button.on{background:#241b2f;color:white}
+.page{display:none}.page.on{display:block}.sectionTitle{display:flex;justify-content:space-between;align-items:center;margin:20px 2px 8px}.sectionTitle h2{font-size:19px;margin:0}.hint{font-size:12px;color:#8b8192}
+.card{background:white;border:1px solid #eee6f5;border-radius:19px;padding:14px;margin:9px 0;box-shadow:0 4px 18px #00000008}.row{display:flex;align-items:center;gap:11px}.emoji{width:47px;height:47px;border-radius:15px;background:#f4edff;display:grid;place-items:center;font-size:24px;flex:none}.grow{flex:1}.name{font-weight:850}.desc{font-size:12px;color:#807587;margin-top:3px}.points{font-weight:900;color:#a16207;background:#fff7df;border-radius:10px;padding:7px 8px;white-space:nowrap}.action{border:0;border-radius:12px;padding:10px 12px;background:#7c3aed;color:white;font-weight:850}.action:active{transform:scale(.96)}
+.reward .action{background:#241b2f}.action:disabled{background:#ddd7e1;color:#9a919f}
+.settings{margin-top:22px;background:white;border-radius:19px;padding:15px;border:1px solid #e8dff0}.settings h3{margin:0 0 10px}.field{margin:9px 0}.field label{display:block;font-size:12px;font-weight:800;color:#74697d;margin-bottom:5px}.field input{width:100%;padding:12px;border:1px solid #ddd4e5;border-radius:12px;font-size:15px}.add{width:100%;border:0;background:#16a34a;color:white;border-radius:12px;padding:12px;font-weight:850}.divider{height:1px;background:#eee6f5;margin:16px 0}.history{font-size:13px}.history div{padding:10px 0;border-bottom:1px solid #eee6f5}.empty{text-align:center;color:#8a7f91;padding:25px}.reset{border:0;background:#fff0f0;color:#b91c1c;border-radius:11px;padding:10px;font-weight:800;margin-top:10px}
+.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,130px);background:#241b2f;color:white;padding:13px 18px;border-radius:999px;font-weight:800;z-index:10;transition:.25s;white-space:nowrap}.toast.show{transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="hero"><div class="heart">❤️</div><h1>Dobry mąż Tomek</h1><p>Każdy dobry gest ma swoją wartość.</p></header>
+
+<div class="score"><div><div class="small">Tomek ma</div><div class="num" id="score">0</div><div class="small">PUNKTÓW</div></div><div class="level"><div id="level">Początkujący mąż</div><div class="bar"><span id="progress"></span></div><div class="small" id="goal">10 pkt do następnego poziomu</div></div></div>
+
+<nav class="nav">
+<button class="on" data-page="tasks">✅ Zadania</button>
+<button data-page="rewards">🎁 Nagrody</button>
+<button data-page="history">📜 Historia</button>
+</nav>
+
+<main id="tasks" class="page on"><div class="sectionTitle"><h2>Misje dla dobrego męża</h2><span class="hint">Wykonaj → odbierz punkty</span></div><div id="tasksBox"></div></main>
+
+<main id="rewards" class="page"><div class="sectionTitle"><h2>Sklep z nagrodami</h2><span class="hint">Wymień punkty</span></div><div id="rewardsBox"></div></main>
+
+<main id="history" class="page"><div class="sectionTitle"><h2>Historia</h2><span class="hint">Ostatnie działania</span></div><div class="card history" id="historyBox"></div></main>
+
+<section class="settings">
+<h3>⚙️ Panel Kariny</h3>
+<div class="field"><label>NOWE ZADANIE</label><input id="taskName" placeholder="np. Zrób Karinie herbatkę"></div>
+<div class="field"><label>ILE PUNKTÓW?</label><input id="taskPoints" type="number" min="1" value="1"></div>
+<button type="button" class="add" id="addTaskBtn">＋ DODAJ ZADANIE</button>
+<div class="divider"></div>
+<div class="field"><label>NOWA NAGRODA</label><input id="rewardName" placeholder="np. Masaż dla Kariny"></div>
+<div class="field"><label>KOSZT W PUNKTACH</label><input id="rewardPoints" type="number" min="1" value="10"></div>
+<button type="button" class="add" id="addRewardBtn">＋ DODAJ NAGRODĘ</button>
+<button type="button" class="reset" id="resetBtn">Wyzeruj punkty i historię</button>
+</section>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+const KEY="DMT_v2";
+const starter={
+points:0,
+tasks:[
+["🍵","Zrób Karinie herbatkę",1],["🤗","Przytul Karine bez powodu",2],["💬","Powiedz Karinie coś miłego",1],
+["❤️","Zapytaj, jak się dziś czuje",2],["🧹","Posprzątaj kuchnię bez proszenia",5],["🍽️","Zajmij się naczyniami",3],
+["👧","Daj Karinie chwilę dla siebie i zajmij się dziećmi",5],["☕","Zrób Karinie coś do picia",2],
+["🌹","Zrób mały romantyczny gest",4],["🌙","Wieczorem zapytaj: „Czego dziś potrzebujesz?”",3]
+].map(x=>({e:x[0],n:x[1],p:x[2]})),
+rewards:[
+["🎬","Karina wybiera film na wieczór",10],["💆","15 minut masażu dla Kariny",15],
+["☕","Karina wybiera, co robicie razem",20],["🍰","Słodka niespodzianka",20],
+["❤️","Wieczór tylko we dwoje",30],["👑","Tytuł: DOBRY MĄŻ 👑",40]
+].map(x=>({e:x[0],n:x[1],p:x[2]})),
+history:[]
+};
+let s;try{s=JSON.parse(localStorage.getItem(KEY))||starter}catch(e){s=starter}
+const $=id=>document.getElementById(id);
+function persist(){try{localStorage.setItem(KEY,JSON.stringify(s))}catch(e){} render()}
+function esc(v){return String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function render(){
+ $("score").textContent=s.points;
+ const lv=[[0,"Początkujący mąż"],[10,"Dobry mąż"],[30,"Super mąż"],[60,"Mąż premium"],[100,"Mąż LEGENDARNY 👑"]];
+ let cur=lv[0],nx=lv[1];lv.forEach(x=>{if(s.points>=x[0])cur=x});nx=lv.find(x=>x[0]>s.points)||[s.points,"MAX"];
+ $("level").textContent=cur[1];$("goal").textContent=nx[1]=="MAX"?"Poziom maksymalny":(nx[0]-s.points)+" pkt do następnego poziomu";
+ $("progress").style.width=(nx[1]=="MAX"?100:Math.min(100,((s.points-cur[0])/(nx[0]-cur[0]))*100))+"%";
+ $("tasksBox").innerHTML=s.tasks.map((t,i)=>'<div class="card"><div class="row"><div class="emoji">'+esc(t.e)+'</div><div class="grow"><div class="name">'+esc(t.n)+'</div><div class="desc">Dobry gest = dobry mąż ❤️</div></div><span class="points">+'+t.p+'</span><button class="action taskBtn" data-i="'+i+'">Zrobiłem</button></div></div>').join("");
+ $("rewardsBox").innerHTML=s.rewards.map((r,i)=>'<div class="card reward"><div class="row"><div class="emoji">'+esc(r.e)+'</div><div class="grow"><div class="name">'+esc(r.n)+'</div><div class="desc">'+r.p+' punktów</div></div><button class="action rewardBtn" data-i="'+i+'" '+(s.points<r.p?"disabled":"")+'>'+(s.points<r.p?"Brakuje "+(r.p-s.points):"Odbierz")+'</button></div></div>').join("");
+ $("historyBox").innerHTML=s.history.length?s.history.slice(0,40).map(x=>"<div>"+x+"</div>").join(""):'<div class="empty">Jeszcze żadnych akcji ❤️</div>';
+}
+function toast(x){$("toast").textContent=x;$("toast").classList.add("show");setTimeout(()=>$("toast").classList.remove("show"),1800)}
+$("tasksBox").addEventListener("click",e=>{let b=e.target.closest(".taskBtn");if(!b)return;let t=s.tasks[+b.dataset.i];s.points+=Number(t.p);s.history.unshift("✅ "+esc(t.n)+" <b>+"+t.p+" pkt</b>");persist();toast("Brawo Tomek! +"+t.p+" pkt ❤️")});
+$("rewardsBox").addEventListener("click",e=>{let b=e.target.closest(".rewardBtn");if(!b||b.disabled)return;let r=s.rewards[+b.dataset.i];s.points-=Number(r.p);s.history.unshift("🎁 Odebrano: "+esc(r.n)+" <b>−"+r.p+" pkt</b>");persist();toast("Nagroda odebrana! 🎁")});
+$("addTaskBtn").addEventListener("click",function(){let n=$("taskName").value.trim(),p=Math.max(1,Number($("taskPoints").value)||1);if(!n){toast("Wpisz nazwę zadania ✏️");$("taskName").focus();return}s.tasks.push({e:"⭐",n:n,p:p});$("taskName").value="";$("taskPoints").value=1;persist();toast("Dodano zadanie! ✅")});
+$("addRewardBtn").addEventListener("click",function(){let n=$("rewardName").value.trim(),p=Math.max(1,Number($("rewardPoints").value)||1);if(!n){toast("Wpisz nazwę nagrody ✏️");$("rewardName").focus();return}s.rewards.push({e:"🎁",n:n,p:p});$("rewardName").value="";$("rewardPoints").value=10;persist();toast("Dodano nagrodę! 🎁")});
+$("resetBtn").addEventListener("click",function(){if(window.confirm("Wyzerować punkty i historię?")){s.points=0;s.history=[];persist();toast("Wyzerowano")}})
+document.querySelector(".nav").addEventListener("click",e=>{let b=e.target.closest("button");if(!b)return;document.querySelectorAll(".nav button").forEach(x=>x.classList.remove("on"));b.classList.add("on");document.querySelectorAll(".page").forEach(x=>x.classList.remove("on"));$(b.dataset.page).classList.add("on")});
+render();
+})();
+</script>
+</body>
+</html>
