@@ -1,14 +1,37 @@
-<!doctype html><html lang="pl"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Dobry mąż Tomek</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f8f5ff;color:#241b2f}.app{max-width:700px;margin:auto;padding:18px 15px 45px}
-.hero{text-align:center}.heart{font-size:42px}.hero h1{margin:3px 0;font-size:32px}.hero p{color:#756b80}.score{margin:15px 0;padding:19px;border-radius:24px;color:white;background:linear-gradient(135deg,#7c3aed,#ec4899);display:flex;justify-content:space-between}.num{font-size:43px;font-weight:900}.level{text-align:right;font-weight:800}.bar{height:7px;width:145px;background:#ffffff44;border-radius:10px;margin:8px 0}.bar span{display:block;height:100%;background:white;border-radius:10px}
-.nav{display:flex;gap:7px;margin:13px 0}.nav button{flex:1;border:0;border-radius:14px;padding:12px 5px;background:white;font-weight:800}.nav .on{background:#241b2f;color:white}.page{display:none}.page.on{display:block}
-.card{background:white;border:1px solid #eee6f5;border-radius:19px;padding:14px;margin:9px 0;box-shadow:0 4px 18px #00000008}.row{display:flex;align-items:center;gap:11px}.emoji{width:47px;height:47px;border-radius:15px;background:#f4edff;display:grid;place-items:center;font-size:24px}.grow{flex:1}.name{font-weight:850}.desc{font-size:12px;color:#807587}.points{font-weight:900;color:#a16207;background:#fff7df;border-radius:10px;padding:7px}.action{border:0;border-radius:12px;padding:10px 12px;background:#7c3aed;color:white;font-weight:850}.action:disabled{background:#ddd;color:#999}.settings{margin-top:22px;background:white;border-radius:19px;padding:15px}.field{margin:9px 0}.field label{display:block;font-size:12px;font-weight:800}.field input{width:100%;padding:12px;border:1px solid #ddd4e5;border-radius:12px;font-size:15px}.add{width:100%;border:0;background:#16a34a;color:white;border-radius:12px;padding:12px;font-weight:850}.reset{border:0;background:#fff0f0;color:#b91c1c;border-radius:11px;padding:10px;font-weight:800;margin-top:10px}.history div{padding:10px 0;border-bottom:1px solid #eee6f5}.empty{text-align:center;color:#8a7f91;padding:25px}.sync{text-align:center;font-size:12px;color:#16a34a;margin-top:10px}.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,130px);background:#241b2f;color:white;padding:13px 18px;border-radius:999px;font-weight:800;transition:.25s}.toast.show{transform:translate(-50%,0)}
-</style></head><body><div class="app">
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f8f5ff;color:#241b2f}
+.app{max-width:700px;margin:auto;padding:18px 15px 45px}
+.hero{text-align:center}.heart{font-size:42px}.hero h1{margin:3px 0;font-size:32px}.hero p{color:#756b80}
+.score{margin:15px 0;padding:19px;border-radius:24px;color:white;background:linear-gradient(135deg,#7c3aed,#ec4899);display:flex;justify-content:space-between}
+.num{font-size:43px;font-weight:900}.level{text-align:right;font-weight:800}.bar{height:7px;width:145px;background:#ffffff44;border-radius:10px;margin:8px 0}.bar span{display:block;height:100%;background:white;border-radius:10px}
+.nav{display:flex;gap:7px;margin:13px 0}.nav button{flex:1;border:0;border-radius:14px;padding:12px 5px;background:white;font-weight:800}.nav .on{background:#241b2f;color:white}
+.page{display:none}.page.on{display:block}
+.card{background:white;border:1px solid #eee6f5;border-radius:19px;padding:14px;margin:9px 0;box-shadow:0 4px 18px #00000008}
+.row{display:flex;align-items:center;gap:11px}.emoji{width:47px;height:47px;border-radius:15px;background:#f4edff;display:grid;place-items:center;font-size:24px}.grow{flex:1}
+.name{font-weight:850}.desc{font-size:12px;color:#807587}.points{font-weight:900;color:#a16207;background:#fff7df;border-radius:10px;padding:7px}
+.action{border:0;border-radius:12px;padding:10px 12px;background:#7c3aed;color:white;font-weight:850;cursor:pointer}
+.action:disabled{background:#ddd;color:#999}.settings{margin-top:22px;background:white;border-radius:19px;padding:15px}
+.field{margin:9px 0}.field label{display:block;font-size:12px;font-weight:800}.field input{width:100%;padding:12px;border:1px solid #ddd4e5;border-radius:12px;font-size:15px}
+.add{width:100%;border:0;background:#16a34a;color:white;border-radius:12px;padding:12px;font-weight:850}.reset{border:0;background:#fff0f0;color:#b91c1c;border-radius:11px;padding:10px;font-weight:800;margin-top:10px}
+.history div{padding:10px 0;border-bottom:1px solid #eee6f5}.empty{text-align:center;color:#8a7f91;padding:25px}
+.sync{text-align:center;font-size:12px;color:#16a34a;margin-top:10px}.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,130px);background:#241b2f;color:white;padding:13px 18px;border-radius:999px;font-weight:800;transition:.25s}.toast.show{transform:translate(-50%,0)}
+h2{margin-bottom:12px}
+</style>
+</head>
+<body>
+<div class="app">
 <header class="hero"><div class="heart">❤️</div><h1>Dobry mąż Tomek</h1><p>Każdy dobry gest ma swoją wartość.</p></header>
-<div class="score"><div><div>Tomek ma</div><div class="num" id="score">0</div><div>PUNKTÓW</div></div><div class="level"><div id="level">Początkujący mąż</div><div class="bar"><span id="progress"></span></div><div id="goal">10 pkt do następnego poziomu</div></div></div>
+<div class="score">
+  <div><div>Tomek ma</div><div class="num" id="score">0</div><div>PUNKTÓW</div></div>
+  <div class="level"><div id="level">Początkujący mąż</div><div class="bar"><span id="progress"></span></div><div id="goal">10 pkt do następnego poziomu</div></div>
+</div>
 <nav class="nav"><button class="on" data-page="tasks">✅ Zadania</button><button data-page="rewards">🎁 Nagrody</button><button data-page="history">📜 Historia</button></nav>
 <main id="tasks" class="page on"><h2>Misje dla dobrego męża</h2><div id="tasksBox"></div></main>
 <main id="rewards" class="page"><h2>Sklep z nagrodami</h2><div id="rewardsBox"></div></main>
@@ -16,31 +39,165 @@
 <section class="settings"><h3>⚙️ Panel Kariny</h3>
 <div class="field"><label>NOWE ZADANIE</label><input id="taskName" placeholder="np. Zrób Karinie herbatkę"></div>
 <div class="field"><label>ILE PUNKTÓW?</label><input id="taskPoints" type="number" min="1" value="1"></div><button class="add" id="addTaskBtn">＋ DODAJ ZADANIE</button>
-<hr><div class="field"><label>NOWA NAGRODA</label><input id="rewardName" placeholder="np. Masaż dla Kariny"></div>
+<hr>
+<div class="field"><label>NOWA NAGRODA</label><input id="rewardName" placeholder="np. Masaż dla Kariny"></div>
 <div class="field"><label>KOSZT W PUNKTACH</label><input id="rewardPoints" type="number" min="1" value="10"></div><button class="add" id="addRewardBtn">＋ DODAJ NAGRODĘ</button>
-<button class="reset" id="resetBtn">Wyzeruj punkty i historię</button></section>
-<div class="sync" id="sync">Łączenie z bazą…</div></div><div class="toast" id="toast"></div>
+<button class="reset" id="resetBtn">Wyzeruj punkty i historię</button>
+</section>
+<div class="sync" id="sync">Łączenie z bazą…</div>
+</div>
+<div class="toast" id="toast"></div>
 
-<script type="module">
-import{initializeApp}from"https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
-import{getDatabase,ref,onValue,set}from"https://www.gstatic.com/firebasejs/12.19.0/firebase-database.js";
-const firebaseConfig={apiKey:"AIzaSyD84UVcL1AUbsuhJV2p8JzJcUuw-RJA7B4",authDomain:"dobry-maz.firebaseapp.com",databaseURL:"https://dobry-maz-default-rtdb.firebaseio.com",projectId:"dobry-maz",storageBucket:"dobry-maz.firebasestorage.app",messagingSenderId:"16988241674",appId:"1:16988241674:web:4d86ae28c28601efb6c4f3",measurementId:"G-YEXYMLNMQ7"};
-const db=getDatabase(initializeApp(firebaseConfig)),stateRef=ref(db,"dobryMaz/state");
-const starter={points:0,tasks:[
-{e:"🍵",n:"Zrób Karinie herbatkę",p:1},{e:"🤗",n:"Przytul Karine bez powodu",p:2},{e:"💬",n:"Powiedz Karinie coś miłego",p:1},{e:"❤️",n:"Zapytaj, jak się dziś czuje",p:2},{e:"🧹",n:"Posprzątaj kuchnię bez proszenia",p:5},{e:"🍽️",n:"Zajmij się naczyniami",p:3},{e:"👧",n:"Daj Karinie chwilę dla siebie i zajmij się dziećmi",p:5},{e:"☕",n:"Zrób Karinie coś do picia",p:2},{e:"🌹",n:"Zrób mały romantyczny gest",p:4},{e:"🌙",n:"Wieczorem zapytaj: „Czego dziś potrzebujesz?”",p:3}],
-rewards:[{e:"🎬",n:"Karina wybiera film na wieczór",p:10},{e:"💆",n:"15 minut masażu dla Kariny",p:15},{e:"☕",n:"Karina wybiera, co robicie razem",p:20},{e:"🍰",n:"Słodka niespodzianka",p:20},{e:"❤️",n:"Wieczór tylko we dwoje",p:30},{e:"👑",n:"Tytuł: DOBRY MĄŻ 👑",p:40}],history:[]};
-let s=null;const $=id=>document.getElementById(id),esc=x=>String(x).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-function render(){if(!s)return;let pts=+s.points||0,lv=[[0,"Początkujący mąż"],[10,"Dobry mąż"],[30,"Super mąż"],[60,"Mąż premium"],[100,"Mąż LEGENDARNY 👑"]],cur=lv[0],nx=lv[1];lv.forEach(x=>{if(pts>=x[0])cur=x});nx=lv.find(x=>x[0]>pts)||[pts,"MAX"];$("score").textContent=pts;$("level").textContent=cur[1];$("goal").textContent=nx[1]=="MAX"?"Poziom maksymalny":nx[0]-pts+" pkt do następnego poziomu";$("progress").style.width=(nx[1]=="MAX"?100:((pts-cur[0])/(nx[0]-cur[0])*100))+"%";
-$("tasksBox").innerHTML=s.tasks.map((t,i)=>`<div class="card"><div class="row"><div class="emoji">${esc(t.e)}</div><div class="grow"><div class="name">${esc(t.n)}</div><div class="desc">Dobry gest = dobry mąż ❤️</div></div><span class="points">+${t.p}</span><button class="action taskBtn" data-i="${i}">Zrobiłem</button></div></div>`).join("");
-$("rewardsBox").innerHTML=s.rewards.map((r,i)=>`<div class="card"><div class="row"><div class="emoji">${esc(r.e)}</div><div class="grow"><div class="name">${esc(r.n)}</div><div class="desc">${r.p} punktów</div></div><button class="action rewardBtn" data-i="${i}" ${pts<r.p?"disabled":""}>${pts<r.p?"Brakuje "+(r.p-pts):"Odbierz"}</button></div></div>`).join("");
-$("historyBox").innerHTML=s.history.length?s.history.slice(0,40).map(x=>"<div>"+x+"</div>").join(""):'<div class="empty">Jeszcze żadnych akcji ❤️</div>'}
-async function save(){try{await set(stateRef,s);$("sync").textContent="🟢 Synchronizacja działa — wspólne dane"}catch(e){$("sync").textContent="❌ Błąd bazy";console.error(e)}}
-onValue(stateRef,async snap=>{if(snap.exists())s=snap.val();else{s=JSON.parse(JSON.stringify(starter));await save()}render();$("sync").textContent="🟢 Połączono — wspólne dane na obu telefonach"},e=>{$("sync").textContent="❌ Brak dostępu do bazy";console.error(e)});
-function toast(x){$("toast").textContent=x;$("toast").classList.add("show");setTimeout(()=>$("toast").classList.remove("show"),1800)}
-$("tasksBox").onclick=async e=>{let b=e.target.closest(".taskBtn");if(!b)return;let t=s.tasks[+b.dataset.i];s.points=(+s.points||0)+(+t.p);s.history.unshift("✅ "+esc(t.n)+" <b>+"+t.p+" pkt</b>");render();await save();toast("Brawo Tomek! +"+t.p+" pkt ❤️")};
-$("rewardsBox").onclick=async e=>{let b=e.target.closest(".rewardBtn");if(!b||b.disabled)return;let r=s.rewards[+b.dataset.i];if(s.points<r.p)return;s.points-=+r.p;s.history.unshift("🎁 Odebrano: "+esc(r.n)+" <b>−"+r.p+" pkt</b>");render();await save();toast("Nagroda odebrana! 🎁")};
-$("addTaskBtn").onclick=async()=>{let n=$("taskName").value.trim(),p=Math.max(1,+$("taskPoints").value||1);if(!n)return toast("Wpisz nazwę zadania ✏️");s.tasks.push({e:"⭐",n,p});$("taskName").value="";render();await save();toast("Dodano zadanie! ✅")};
-$("addRewardBtn").onclick=async()=>{let n=$("rewardName").value.trim(),p=Math.max(1,+$("rewardPoints").value||1);if(!n)return toast("Wpisz nazwę nagrody ✏️");s.rewards.push({e:"🎁",n,p});$("rewardName").value="";render();await save();toast("Dodano nagrodę! 🎁")};
-$("resetBtn").onclick=async()=>{if(confirm("Wyzerować punkty i historię?")){s.points=0;s.history=[];render();await save();toast("Wyzerowano")}};
-document.querySelector(".nav").onclick=e=>{let b=e.target.closest("button");if(!b)return;document.querySelectorAll(".nav button").forEach(x=>x.classList.remove("on"));b.classList.add("on");document.querySelectorAll(".page").forEach(x=>x.classList.remove("on"));$(b.dataset.page).classList.add("on")};
-</script></body></html>
+<script>
+const DB_URL="https://dobry-maz-default-rtdb.firebaseio.com/dobryMaz/state.json";
+
+const starter={
+  points:0,
+  tasks:[
+    {e:"🍵",n:"Zrób Karinie herbatkę",p:1},
+    {e:"🤗",n:"Przytul Karine bez powodu",p:2},
+    {e:"💬",n:"Powiedz Karinie coś miłego",p:1},
+    {e:"❤️",n:"Zapytaj, jak się dziś czuje",p:2},
+    {e:"🧹",n:"Posprzątaj kuchnię bez proszenia",p:5},
+    {e:"🍽️",n:"Zajmij się naczyniami",p:3},
+    {e:"👧",n:"Daj Karinie chwilę dla siebie i zajmij się dziećmi",p:5},
+    {e:"☕",n:"Zrób Karinie coś do picia",p:2},
+    {e:"🌹",n:"Zrób mały romantyczny gest",p:4},
+    {e:"🌙",n:"Wieczorem zapytaj: „Czego dziś potrzebujesz?”",p:3}
+  ],
+  rewards:[
+    {e:"🎬",n:"Karina wybiera film na wieczór",p:10},
+    {e:"💆",n:"15 minut masażu dla Kariny",p:15},
+    {e:"☕",n:"Karina wybiera, co robicie razem",p:20},
+    {e:"🍰",n:"Słodka niespodzianka",p:20},
+    {e:"❤️",n:"Wieczór tylko we dwoje",p:30},
+    {e:"👑",n:"Tytuł: DOBRY MĄŻ 👑",p:40}
+  ],
+  history:[]
+};
+
+let s=null;
+const $=id=>document.getElementById(id);
+const esc=x=>String(x).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+function render(){
+  if(!s)return;
+  const pts=+s.points||0;
+  const lv=[[0,"Początkujący mąż"],[10,"Dobry mąż"],[30,"Super mąż"],[60,"Mąż premium"],[100,"Mąż LEGENDARNY 👑"]];
+  let cur=lv[0];
+  lv.forEach(x=>{if(pts>=x[0])cur=x});
+  const nx=lv.find(x=>x[0]>pts)||[pts,"MAX"];
+  $("score").textContent=pts;
+  $("level").textContent=cur[1];
+  $("goal").textContent=nx[1]=="MAX"?"Poziom maksymalny":(nx[0]-pts)+" pkt do następnego poziomu";
+  $("progress").style.width=(nx[1]=="MAX"?100:((pts-cur[0])/(nx[0]-cur[0])*100))+"%";
+
+  $("tasksBox").innerHTML=(s.tasks||[]).map((t,i)=>
+    `<div class="card"><div class="row"><div class="emoji">${esc(t.e)}</div>
+    <div class="grow"><div class="name">${esc(t.n)}</div><div class="desc">Dobry gest = dobry mąż ❤️</div></div>
+    <span class="points">+${t.p}</span><button class="action taskBtn" data-i="${i}">Zrobiłem</button>
+    </div></div>`).join("");
+
+  $("rewardsBox").innerHTML=(s.rewards||[]).map((r,i)=>
+    `<div class="card"><div class="row"><div class="emoji">${esc(r.e)}</div>
+    <div class="grow"><div class="name">${esc(r.n)}</div><div class="desc">${r.p} punktów</div></div>
+    <button class="action rewardBtn" data-i="${i}" ${pts<r.p?"disabled":""}>${pts<r.p?"Brakuje "+(r.p-pts):"Odbierz"}</button>
+    </div></div>`).join("");
+
+  const hist=s.history||[];
+  $("historyBox").innerHTML=hist.length?hist.slice(0,40).map(x=>"<div>"+x+"</div>").join(""):'<div class="empty">Jeszcze żadnych akcji ❤️</div>';
+}
+
+function toast(x){
+  $("toast").textContent=x;
+  $("toast").classList.add("show");
+  setTimeout(()=>$("toast").classList.remove("show"),1800);
+}
+
+async function load(){
+  try{
+    const r=await fetch(DB_URL+"?v="+Date.now(),{cache:"no-store"});
+    if(!r.ok)throw new Error("HTTP "+r.status);
+    const data=await r.json();
+    if(data){
+      s=data;
+    }else{
+      s=JSON.parse(JSON.stringify(starter));
+      await save();
+    }
+    render();
+    $("sync").textContent="🟢 Połączono — wspólne dane na obu telefonach";
+  }catch(e){
+    console.error(e);
+    s=JSON.parse(JSON.stringify(starter));
+    render();
+    $("sync").textContent="🟠 Tryb lokalny — baza niedostępna";
+  }
+}
+
+async function save(){
+  const r=await fetch(DB_URL,{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify(s)});
+  if(!r.ok)throw new Error("HTTP "+r.status);
+  $("sync").textContent="🟢 Zapisano — wspólne dane";
+}
+
+$("tasksBox").addEventListener("click",async e=>{
+  const b=e.target.closest(".taskBtn");
+  if(!b||!s)return;
+  const t=s.tasks[+b.dataset.i];
+  if(!t)return;
+  b.disabled=true;
+  s.points=(+s.points||0)+(+t.p||0);
+  s.history=s.history||[];
+  s.history.unshift("✅ "+esc(t.n)+" <b>+"+t.p+" pkt</b>");
+  render();
+  try{await save();toast("Brawo Tomek! +"+t.p+" pkt ❤️")}
+  catch(err){console.error(err);$("sync").textContent="❌ Nie udało się zapisać";toast("Nie udało się zapisać 😔")}
+});
+
+$("rewardsBox").addEventListener("click",async e=>{
+  const b=e.target.closest(".rewardBtn");
+  if(!b||b.disabled||!s)return;
+  const r=s.rewards[+b.dataset.i];
+  if(!r||s.points<r.p)return;
+  s.points-=+r.p;
+  s.history=s.history||[];
+  s.history.unshift("🎁 Odebrano: "+esc(r.n)+" <b>−"+r.p+" pkt</b>");
+  render();
+  try{await save();toast("Nagroda odebrana! 🎁")}
+  catch(err){console.error(err);$("sync").textContent="❌ Nie udało się zapisać";toast("Nie udało się zapisać 😔")}
+});
+
+$("addTaskBtn").addEventListener("click",async()=>{
+  const n=$("taskName").value.trim(),p=Math.max(1,+$("taskPoints").value||1);
+  if(!n)return toast("Wpisz nazwę zadania ✏️");
+  s.tasks=s.tasks||[];s.tasks.push({e:"⭐",n,p});$("taskName").value="";render();
+  try{await save();toast("Dodano zadanie! ✅")}catch(e){$("sync").textContent="❌ Nie udało się zapisać"}
+});
+
+$("addRewardBtn").addEventListener("click",async()=>{
+  const n=$("rewardName").value.trim(),p=Math.max(1,+$("rewardPoints").value||1);
+  if(!n)return toast("Wpisz nazwę nagrody ✏️");
+  s.rewards=s.rewards||[];s.rewards.push({e:"🎁",n,p});$("rewardName").value="";render();
+  try{await save();toast("Dodano nagrodę! 🎁")}catch(e){$("sync").textContent="❌ Nie udało się zapisać"}
+});
+
+$("resetBtn").addEventListener("click",async()=>{
+  if(confirm("Wyzerować punkty i historię?")){
+    s.points=0;s.history=[];render();
+    try{await save();toast("Wyzerowano")}catch(e){$("sync").textContent="❌ Nie udało się zapisać"}
+  }
+});
+
+document.querySelector(".nav").addEventListener("click",e=>{
+  const b=e.target.closest("button");if(!b)return;
+  document.querySelectorAll(".nav button").forEach(x=>x.classList.remove("on"));
+  b.classList.add("on");
+  document.querySelectorAll(".page").forEach(x=>x.classList.remove("on"));
+  $(b.dataset.page).classList.add("on");
+});
+
+load();
+</script>
+</body>
+</html>
